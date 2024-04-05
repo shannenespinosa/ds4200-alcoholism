@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring Postmortem Patterns of Alcohol Consumption Nationally</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="intro">
+    <h1>Exploring Postmortem Patterns of Alcohol Consumption Nationally</h1>
+    <p>Ansley Cooper '25 & Shannen Espinosa '25<br>Northeastern University, Boston, MA 02115</p>
+</div>
+
+<h2>Background</h2>
+    <p>
+        Alcohol consumption is often editorialized in college life. Sometimes,
+        in the glitz and glamor of partying, it's hard to remember the severity
+        of alcohol related diseases. The NIH estimates that approximately 30 million
+        or 10% of Americans have alcohol addictive disorders. Alcohol can impact
+        longevity and the quality of life of those intoxicated and those around them.
+        So how does college play into a potentially life long comorbidity?
+    </p>
+    <p>
+        In our initial exploratory research into the surveillance of excessive alcohol use,
+        we found reports indicating drastic decreases in life expectancies when
+        comparing drinkers to non-drinkers (Fig 1) as well as insight into the
+        non-linear relationship of alcohol consumption with all-cause mortality
+        rates (Fig 2).
+    </p>
+    <div class="row">
+        <div class="two-column">
+            <img src="viz/expectancy.png" alt=""/>
+        </div>
+        <div class="two-column">
+            <img src="viz/nonlinear.png" alt=""/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="two-column">
+            <p class="desc">
+                <b>Figure 1.</b> &ensp; The variance in life expectancy (measured
+                in years) across ranges of excessive and limited levels of alcohol use.
+                The controls for comparison are individuals who neither smoke nor drink<sup><a href="#ref1">1</a></sup>.
+            </p>
+        </div>
+        <div class="two-column">
+            <p class="desc">
+                <b>Figure 2.</b> &ensp; The nonlinear association between alcohol
+                intake and the risk of mortality from all causes of death follow
+                a dose-response pattern with a J-shaped association, indicating initial
+                decrease in risk, followed by steep increases as consumptions levels rise<sup><a href="#ref2">2</a></sup>.
+            </p>
+        </div>
+    </div>
+    <p>
+        With this in mind, our project seeks to analyze Alcohol-Related Disease Impacts (ARDIs)
+        across the United States by looking into patterns of alcohol based
+        deaths based on numerous factors that may suggest a higher prevalence
+        of normalization of abusive or binge-drinking culture. We used <span>Pandas</span>,
+        <span>GeoPandas</span>, and <span>Altair</span> for our final analyses.
+    </p>
+
+<h2>Dataset</h2>
+    <p>
+        We analyzed the dataset from Health.gov on <a href="https://healthdata.gov/dataset/Alcohol-Related-Disease-Impact-ARDI-Application-Al/8i56-u98i/about_data"> Alcohol-Related Disease Impact</a>. It contains 30 columns and 62,505 rows
+        of data. The rows are data reports between 2015 and 2019 across
+        ages and sexes for deaths attributable to alcohol. It contains
+        estimates of alcohol-related disease impacts across the United
+        States, noting causes of death and years of potential life lost.
+    </p>
+    <p>
+        The dataset, <span>filtered_alc_mort.csv</span>, documents total
+        fatalities in a given combination of state, extent, cause of death,
+        age group, gender, etc. For instance, between 2015 and 2019, there
+        were 13 deaths documented concerning excessive alcohol use among
+        females under 21 leading to declarations of alcohol poisonings
+        as causes of death in West Virginia.
+    </p>
+    <p>
+        In summary, the most relevant features of the dataset we have
+        analyzed are the following:
+    </p>
+    <ul>
+        <li><span>LocationDesc</span>: String entries of the state wherein the ARDI was documented</li>
+        <li><span>AgeGroup</span>: String entries of whether the individuals documented were
+                of age ranges: 0-19, 20-34, 35-49, 50-64, and 65+</li>
+        <li><span>Fatalities</span>: Integer entries of total fatality counts on a given documented incident combination</li>
+        <li><span>Cause_of_Death</span>: String entries of declared cause of death</li>
+    </ul>
+    <p>
+        Lastly, our geographic analyses were mapped alongside state population data
+        from <a href="https://github.com/nvkelso/natural-earth-vector/tree/master">Natural Earth Vector</a>,
+        a public domain map, allowing for more accurate state-by-state <i>per capita</i> comparisons
+        across <span>GeoPandas</span> plot analyses.
+    </p>
+    <p>
+        Read more about the data collection methods for ARDIs in
+        <a href="https://www.cdc.gov/alcohol/ardi/methods.html">
+            Alcohol and Public Health Methods
+        </a> at the CDC.
+        Our analyses were inspired by the
+        <a href="https://nccd.cdc.gov/DPH_ARDI/default/default.aspx">
+            CDC's Application on Alcohol-Related Disease Impact
+        </a> and the
+        <a href="https://www.cdc.gov/alcohol/data-stats.htm">
+            CDC's Data on Excessive Drinking</a>.
+      </p>
+
+
+<h2>National Overview of ARDIs</h2>
+    <p>
+        The Alcohol-Related Disease Impact application, or ARDI, estimates the number of
+        deaths and years of potential life lost due to alcohol consumption. They help inform
+        policy and response for public health agencies and researchers regarding the impact of
+        alcohol on population health. To do this, the ARDI method analyzes mortality data and
+        alcohol consumption patterns to calculate the proportion of deaths attributable
+        to alcohol-related causes, with factors such as age, sex, alcohol use, and more<sup><a href="#ref3">3</a></sup>.
+    </p>
+    <p>
+        Across all fifty states, the alcohol-related causes of death leading to the highest
+        rates of fatality are: (1) alcoholic liver disease, (2) poisoning, not alcohol, (3)
+        motor vehicle traffic crashes, (4) hypertension, (5) suicide, (6) liver cirrhosis, and
+        (7) homicide (Fig 3). While rates of fatality nationwide drop sharply following the highest
+        seven, the diverse range of health issues leading to death displayed here give insight
+        into the multifaceted nature of alcohol-related harm. Particularly, not only may
+        excessive alcohol most likely lead to liver damage, it also relates to impaired
+        judgments in ingestion, causing poisoning, as well as impaired cognitive and motor
+        functions, causing accidents.
+    </p>
+    <iframe src="viz/static_bar.html" width="100%" height="550px" frameborder="0"></iframe>
+    <p>
+        With this foundational understanding of nationwide alcohol health issues, we find
+        increased nuances surrounding the complex landscape of public health response when we
+        break down the causes of death per state. We find geographic variations in alcohol-related
+        mortality patterns (Fig 4). For instance, states like Massachusetts with better healthcare infrastructure
+        and access to preventative services would have overall lower rates of alcohol-related mortality
+        due to early intervention and treatment. In addition, the availability of transportation
+        and walking infrastructure minimize the risk of alcohol-based motor vehicle crashes. This
+        comparison is very evident when compared to states like Florida and Texas.
+    </p>
+    <iframe src="viz/interactive_bar.html" width="100%" height="575px" frameborder="0"></iframe>
+
+<h2>Case Study: Age</h2>
+    <p>
+        As an area of further analysis, we delved into age-specific patterns of alcohol-related
+        fatalities across different states. In doing so, we can uncover nuanced dynamics of
+        alcohol-related harm and better inform targeted interventions at a local level to address
+        age-specific vulnerabilities in mitigating alcohol-related mortality risks.
+    </p>
+    <iframe src="viz/age_map.html" width="100%" height="375px" frameborder="0"></iframe>
+    <p>
+        In the geospatial choropleth map, we can compare alcohol-related deaths of
+        various age groups across the different states (Fig 5). For instance, we see that Louisiana particularly
+        exhibits the highest alcohol-related deaths among individuals aged 0-19.
+        This provides insight into how Louisiana may need to explore and address concerning trends in
+        socioeconomic disparities, accessibility to alcohol, and cultural norms surrounding alcohol consumption
+        (such as Mardi Gras) and how they lead to prevailing risk-taking behaviors among adolescents.
+        On the other hand, states like New Hampshire demonstrate among the lowest rates of
+        alcohol-related deaths, especially for adolescents, which may reflect more supportive
+        communities for youth and overall stronger prevention efforts against alcoholism.
+    </p>
+    <p>
+        On the other spectrum, for ages 65 and above, states like Oregon, Vermont, Maine, and Florida
+        depict particularly elevated rates of alcohol-related deaths for that age group, noting limited
+        supportive services and concerning cultural attitudes among aging populations. Notably, Utah
+        is a clear outlier in this range, with especially low rates of alcohol-related deaths among
+        the elderly. Given the state's stringent alcohol policies, they inevitably form community
+        support systems that promote a healthy aging population.
+    </p>
+    <iframe src="viz/age_heatmap.html" width="100%" height="450px" frameborder="0"></iframe>
+    <p>
+        For a more comprehensive overview of net fatality rates across all age groups, the heatmap
+        relays insights into distinct regional patterns we could not observe in the geospatial
+        choropleth map (Fig 6). When fully compared, we see how states like California, Florida, and
+        Texas consistently exhibit highest net fatalities, reflective of the states' larger population
+        sizes and urbanization likely leading to greater accessibility to alcohol, more complex
+        socioeconomic disparities, and more limited healthcare access and enforcement of alcohol-related
+        policies simply due to the population.
+    </p>
+    <p>
+        Thus, in focusing on an age-specific case study, we are able to compare the fatalities and
+        their regional variances, emphasizing once more the multifaceted nature of alcohol-related harm
+        and the importance of locally directed public health strategies and community-based interventions
+        in mitigating alcohol-related morbidity.
+    </p>
+
+<h2>Conclusion</h2>
+    <p>
+        In having uncovered in-depth the geographic nuances and disparities nationwide on alcohol-attributable
+        deaths, we can fully understand the comprehensive view into how variable the causes of death state-by-state
+        simply due to the aforementioned spectra of specialized regional vulnerabilities.
+    </p>
+    <iframe src="viz/death_map.html" width="100%" height="490px" frameborder="0"></iframe>
+    <p>
+        Going around different causes of death on the geospatial chloropeth map reveal further the extent of
+        regional disparities (Fig 7). The western half of the United States show higher prevalences of alcoholic
+        liver disease and suicide, whereas the eastern half conversely highlight coronary heart disease and
+        laryngeal cancer. Florida becomes an outlier for ischemic stroke fatalities, given the combination of
+        large urban centers and challenges in healthcare access. Southern states like Louisiana, Mississipi,
+        and Alabama have a high concentration of homicide fatalities, attributable to cultural influences in
+        crime rates and access to firearms.
+    </p>
+    <iframe src="viz/death_heatmap.html" width="100%" height="460px" frameborder="0"></iframe>
+    <p>
+        Finally, the comprehensive heatmap concludes our understanding of alcohol-related mortality patterns
+        nationwide (Fig 8). We see alcoholic liver disease as the most significant burden across multiple
+        states, emphasizing the pervasive impact of chronic alcohol abuse on liver health. To a lesser, yet
+        still notable, extent, we see again suicide, homicide, hypertension, liver cirrhosis,
+        motor vehicle traffic crashes, and poisoning across all fifty states, emphasizing once more the
+        multifaceted nature of alcohol-related mortality.
+    </p>
+    <p>
+        Addressing such a myriad of underlying factors requires locally comprehensive public health
+        interventions targeting substance abuse, mental health support, violence prevention, and
+        even road safety measures. As a nation and in our own communities, we can prioritize
+        evidence-based interventions, fostering cross-sector collaboration, and promoting public
+        awareness and education to reduce the national burden of alcohol-related harm. In increasing
+        health equity and preventing substance abuse, we can altogether create environments that
+        support health behaviors and well-being for all.
+    </p>
+
+
+<h2>Academic References</h2>
+    <ol>
+        <li id="ref1">Liu, YT., Lee, J.H., Tsai, M.K. <i>et al</i>. The effects of modest drinking on life expectancy and mortality risks: a population-based cohort study. <i>Sci Rep</i> 12, 7476 (2022). <a href="https://doi.org/10.1038/s41598-022-11427-x">https://doi.org/10.1038/s41598-022-11427-x</a></li>
+        <li id="ref2">Tian, Y., Liu, J., Zhao, Y. <i>et al</i>. Alcohol consumption and all-cause and cause-specific mortality among US adults: prospective cohort study. <i>BMC Med</i> 21, 208 (2023). <a href="https://doi.org/10.1186/s12916-023-02907-6">https://doi.org/10.1186/s12916-023-02907-6</a></li>
+        <li id="ref3">Center for Disease Control and Prevention. ARDI Methods. <i>Alcohol and Public Health</i>. <a href="https://www.cdc.gov/alcohol/ardi/methods.html">https://www.cdc.gov/alcohol/ardi/methods.html</a></li>
+    </ol>
+</body>
+</html>
