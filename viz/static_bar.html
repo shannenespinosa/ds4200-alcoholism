@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"anchor": "start"}}, "data": {"name": "data-13c37a4cbdc6b54f559cbfdcfad324f7"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "Cause_of_Death", "sort": "-y", "type": "nominal"}, "y": {"field": "Fatalities", "type": "quantitative"}}, "title": "Figure 3.   Total Nationwide Fatality Frequencies of Alcohol-Related Causes of Death", "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-13c37a4cbdc6b54f559cbfdcfad324f7": [{"Cause_of_Death": "Air-space transport", "Fatalities": 435}, {"Cause_of_Death": "Alcohol abuse", "Fatalities": 42768}, {"Cause_of_Death": "Alcohol cardiomyopathy", "Fatalities": 4544}, {"Cause_of_Death": "Alcohol dependence syndrome", "Fatalities": 61158}, {"Cause_of_Death": "Alcohol poisoning", "Fatalities": 25674}, {"Cause_of_Death": "Alcohol polyneuropathy", "Fatalities": 42}, {"Cause_of_Death": "Alcohol-induced acute pancreatitis", "Fatalities": 2692}, {"Cause_of_Death": "Alcohol-induced chronic pancreatitis", "Fatalities": 360}, {"Cause_of_Death": "Alcoholic gastritis", "Fatalities": 214}, {"Cause_of_Death": "Alcoholic liver disease", "Fatalities": 267996}, {"Cause_of_Death": "Alcoholic myopathy", "Fatalities": 12}, {"Cause_of_Death": "Alcoholic psychosis", "Fatalities": 9406}, {"Cause_of_Death": "Aspiration", "Fatalities": 2312}, {"Cause_of_Death": "Atrial fibrillation", "Fatalities": 15177}, {"Cause_of_Death": "Cancer, breast (females only)", "Fatalities": 28489}, {"Cause_of_Death": "Cancer, colorectal", "Fatalities": 33151}, {"Cause_of_Death": "Cancer, esophageal", "Fatalities": 16255}, {"Cause_of_Death": "Cancer, laryngeal", "Fatalities": 6155}, {"Cause_of_Death": "Cancer, liver", "Fatalities": 43378}, {"Cause_of_Death": "Cancer, oral cavity and pharyngeal", "Fatalities": 28051}, {"Cause_of_Death": "Cancer, pancreatic", "Fatalities": 5094}, {"Cause_of_Death": "Cancer, prostate (males only)", "Fatalities": 6700}, {"Cause_of_Death": "Cancer, stomach", "Fatalities": 1018}, {"Cause_of_Death": "Child maltreatment", "Fatalities": 1238}, {"Cause_of_Death": "Chronic hepatitis", "Fatalities": 40}, {"Cause_of_Death": "Coronary heart disease", "Fatalities": 56252}, {"Cause_of_Death": "Degeneration of nervous system due to alcohol", "Fatalities": 1148}, {"Cause_of_Death": "Drowning", "Fatalities": 10135}, {"Cause_of_Death": "Esophageal varices", "Fatalities": 812}, {"Cause_of_Death": "Fall injuries", "Fatalities": 25236}, {"Cause_of_Death": "Fetal alcohol syndrome", "Fatalities": 45}, {"Cause_of_Death": "Fetus and newborn affected by maternal use of alcohol", "Fatalities": 16}, {"Cause_of_Death": "Fire injuries", "Fatalities": 11667}, {"Cause_of_Death": "Firearm injuries", "Fatalities": 857}, {"Cause_of_Death": "Gallbladder disease", "Fatalities": -2485}, {"Cause_of_Death": "Gastroesophageal hemorrhage", "Fatalities": 198}, {"Cause_of_Death": "Homicide", "Fatalities": 103240}, {"Cause_of_Death": "Hypertension", "Fatalities": 132673}, {"Cause_of_Death": "Hypothermia", "Fatalities": 2616}, {"Cause_of_Death": "Infant death, low birth weight", "Fatalities": 32}, {"Cause_of_Death": "Infant death, preterm birth", "Fatalities": 736}, {"Cause_of_Death": "Infant death, small for gestational age", "Fatalities": 0}, {"Cause_of_Death": "Liver cirrhosis, unspecified", "Fatalities": 125238}, {"Cause_of_Death": "Motor vehicle nontraffic crashes", "Fatalities": 1212}, {"Cause_of_Death": "Motor vehicle traffic crashes", "Fatalities": 154365}, {"Cause_of_Death": "Occupational and machine injuries", "Fatalities": 740}, {"Cause_of_Death": "Other road vehicle crashes", "Fatalities": 1238}, {"Cause_of_Death": "Pancreatitis, acute", "Fatalities": 1849}, {"Cause_of_Death": "Pancreatitis, chronic", "Fatalities": 355}, {"Cause_of_Death": "Pneumonia", "Fatalities": 3095}, {"Cause_of_Death": "Poisoning (not alcohol)", "Fatalities": 206385}, {"Cause_of_Death": "Portal hypertension", "Fatalities": 370}, {"Cause_of_Death": "Stroke, hemorrhagic", "Fatalities": 37908}, {"Cause_of_Death": "Stroke, ischemic", "Fatalities": -528}, {"Cause_of_Death": "Suicide", "Fatalities": 131943}, {"Cause_of_Death": "Suicide by and exposure to alcohol", "Fatalities": 247}, {"Cause_of_Death": "Unprovoked seizures, epilepsy, or seizure disorder", "Fatalities": 3819}, {"Cause_of_Death": "Water transport", "Fatalities": 490}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
