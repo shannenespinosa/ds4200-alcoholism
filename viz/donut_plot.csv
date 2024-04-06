@@ -1,0 +1,105 @@
+LocationDesc,Sex,Data_Value,Category
+Alabama,Female,635.0,Total
+Alabama,Male,1680.0,Total
+Alaska,Female,153.0,Total
+Alaska,Male,293.0,Total
+Arizona,Female,1163.0,Total
+Arizona,Male,2640.0,Total
+Arkansas,Female,425.0,Total
+Arkansas,Male,1044.0,Total
+California,Female,4778.0,Total
+California,Male,11393.0,Total
+Colorado,Female,856.0,Total
+Colorado,Male,1869.0,Total
+Connecticut,Female,465.0,Total
+Connecticut,Male,1032.0,Total
+Delaware,Female,141.0,Total
+Delaware,Male,346.0,Total
+District of Columbia,Female,127.0,Total
+District of Columbia,Male,284.0,Total
+Florida,Female,3284.0,Total
+Florida,Male,7762.0,Total
+Georgia,Female,1220.0,Total
+Georgia,Male,2973.0,Total
+Hawaii,Female,145.0,Total
+Hawaii,Male,406.0,Total
+Idaho,Female,235.0,Total
+Idaho,Male,525.0,Total
+Illinois,Female,1535.0,Total
+Illinois,Male,3899.0,Total
+Indiana,Female,892.0,Total
+Indiana,Male,2213.0,Total
+Iowa,Female,400.0,Total
+Iowa,Male,964.0,Total
+Kansas,Female,350.0,Total
+Kansas,Male,854.0,Total
+Kentucky,Female,659.0,Total
+Kentucky,Male,1640.0,Total
+Louisiana,Female,653.0,Total
+Louisiana,Male,1727.0,Total
+Maine,Female,229.0,Total
+Maine,Male,515.0,Total
+Maryland,Female,746.0,Total
+Maryland,Male,1875.0,Total
+Massachusetts,Female,893.0,Total
+Massachusetts,Male,2001.0,Total
+Michigan,Female,1461.0,Total
+Michigan,Male,3291.0,Total
+Minnesota,Female,701.0,Total
+Minnesota,Male,1499.0,Total
+Mississippi,Female,385.0,Total
+Mississippi,Male,1071.0,Total
+Missouri,Female,861.0,Total
+Missouri,Male,2146.0,Total
+Montana,Female,196.0,Total
+Montana,Male,428.0,Total
+Nebraska,Female,235.0,Total
+Nebraska,Male,527.0,Total
+Nevada,Female,486.0,Total
+Nevada,Male,1126.0,Total
+New Hampshire,Female,206.0,Total
+New Hampshire,Male,487.0,Total
+New Jersey,Female,962.0,Total
+New Jersey,Male,2241.0,Total
+New Mexico,Female,469.0,Total
+New Mexico,Male,1146.0,Total
+New York,Female,2200.0,Total
+New York,Male,4861.0,Total
+North Carolina,Female,1373.0,Total
+North Carolina,Male,3258.0,Total
+North Dakota,Female,105.0,Total
+North Dakota,Male,256.0,Total
+Ohio,Female,1814.0,Total
+Ohio,Male,4180.0,Total
+Oklahoma,Female,660.0,Total
+Oklahoma,Male,1576.0,Total
+Oregon,Female,708.0,Total
+Oregon,Male,1574.0,Total
+Pennsylvania,Female,1814.0,Total
+Pennsylvania,Male,4162.0,Total
+Rhode Island,Female,162.0,Total
+Rhode Island,Male,353.0,Total
+South Carolina,Female,761.0,Total
+South Carolina,Male,1930.0,Total
+South Dakota,Female,157.0,Total
+South Dakota,Male,322.0,Total
+Tennessee,Female,1020.0,Total
+Tennessee,Male,2473.0,Total
+Texas,Female,3089.0,Total
+Texas,Male,8012.0,Total
+United States,Female,43472.0,Total
+United States,Male,103271.0,Total
+Utah,Female,293.0,Total
+Utah,Male,636.0,Total
+Vermont,Female,112.0,Total
+Vermont,Male,230.0,Total
+Virginia,Female,971.0,Total
+Virginia,Male,2267.0,Total
+Washington,Female,1088.0,Total
+Washington,Male,2231.0,Total
+West Virginia,Female,308.0,Total
+West Virginia,Male,773.0,Total
+Wisconsin,Female,849.0,Total
+Wisconsin,Male,1918.0,Total
+Wyoming,Female,105.0,Total
+Wyoming,Male,252.0,Total

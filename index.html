@@ -71,7 +71,7 @@
         across the United States by looking into patterns of alcohol based
         deaths based on numerous factors that may suggest a higher prevalence
         of normalization of abusive or binge-drinking culture. We used <span>Pandas</span>,
-        <span>GeoPandas</span>, and <span>Altair</span> for our final analyses.
+        <span>GeoPandas</span>, <span>D3</span>, and <span>Altair</span> for our final analyses.
     </p>
 
 <h2 id="ds">Dataset</h2>
@@ -100,6 +100,7 @@
                 of age ranges: 0-19, 20-34, 35-49, 50-64, and 65+</li>
         <li><span>Fatalities</span>: Integer entries of total fatality counts on a given documented incident combination</li>
         <li><span>Cause_of_Death</span>: String entries of declared cause of death</li>
+        <li><span>Sex</span>: Sex as listed on Death Certificate</li>
     </ul>
     <p>
         Lastly, our geographic analyses were mapped alongside state population data
@@ -196,6 +197,16 @@
         their regional variances, emphasizing once more the multifaceted nature of alcohol-related harm
         and the importance of locally directed public health strategies and community-based interventions
         in mitigating alcohol-related morbidity.
+    </p>
+
+    <iframe src="viz/donut.html" width="100%" height="450px" frameborder="0"></iframe>
+    <p>
+        It is evident that there is a gender gap between the sexes in Alcohol Mortality Rates. Despite Women being the
+        Majority of the US population, men have an almost 2:1 mortality rate across almost every state. While the reason
+        behind this phenomena cannot be claimed based on this data alone, there are some potential hypothesis.
+        Primarily, men are promoted hard liquor such as wiskey and bourbon. Whereas cocktails are often seen as more
+        feminine. Direct alcohol content may contribute to some increased acute moralities. However, this rationale
+        cannot be justified on this dataset alone are require further investigation.
     </p>
 
 <h2 id="co">Conclusion</h2>

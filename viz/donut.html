@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layered Donut Plot</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div>
+    <label for="stateDropdown">Select State:</label>
+    <select id="stateDropdown"></select>
+  </div>
+  <svg id="donutChart" width="600" height="400"></svg>
+
+  <script>
+    const svg = d3.select("#donutChart");
+    const width = +svg.attr("width");
+    const height = +svg.attr("height");
+    const radius = Math.min(width, height) / 2;
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+    // Load data from CSV
+    d3.csv("donut_plot.csv").then(function(data) {
+      const states = [...new Set(data.map(d => d.LocationDesc))];
+
+      // Populate dropdown menu
+      const dropdown = d3.select("#stateDropdown");
+      dropdown.selectAll("option")
+        .data(states)
+        .enter()
+        .append("option")
+        .attr("value", d => d)
+        .text(d => d);
+
+      // Initialize plot with default data
+      updatePlot("Alabama");
+
+      // Update plot when state is selected
+      dropdown.on("change", function() {
+        const selectedState = this.value;
+        updatePlot(selectedState);
+      });
+
+      function updatePlot(selectedState) {
+        const filteredData = data.filter(d => d.LocationDesc === selectedState);
+
+        const pie = d3.pie()
+          .value(d => +d.Data_Value)
+          .sort(null);
+
+        const arc = d3.arc()
+          .innerRadius(radius * 0.5)
+          .outerRadius(radius * 0.8);
+
+        svg.selectAll("*").remove(); // Clear previous elements
+
+        const arcs = svg.selectAll(".arc")
+          .data(pie(filteredData))
+          .enter()
+          .append("g")
+          .attr("class", "arc")
+          .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+        arcs.append("path")
+          .attr("d", arc)
+          .attr("fill", (d, i) => colorScale(i));
+
+        arcs.append("text")
+          .attr("transform", d => `translate(${arc.centroid(d)})`)
+          .attr("dy", "0.35em")
+          .text(d => `${d.data.Sex}: ${d.data.Data_Value}`);
+      }
+    }).catch(function(error) {
+      console.log("Error loading the data: " + error);
+    });
+  </script>
+</body>
+</html>
