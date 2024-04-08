@@ -18,7 +18,7 @@
     const width = +svg.attr("width");
     const height = +svg.attr("height");
     const radius = Math.min(width, height) / 2;
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    const colorScale = d3.scaleOrdinal(d3.schemePastel1);
 
     // Load data from CSV
     d3.csv("donut_plot.csv").then(function(data) {
